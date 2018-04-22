@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class FinishSection : GolfCourseSection {
 
-	// Use this for initialization
-	void Start () {
+    public Vector3 finishLocation;
+
+    public List<GameObject> ballsInHole;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
