@@ -1137,6 +1137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 1247749232270780}
   ball: {fileID: 114476271807251324}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
   _state: 0
   _lastState: 0
   swingCount: 0

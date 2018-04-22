@@ -8,6 +8,7 @@ public class Hole : MonoBehaviour {
     public FinishSection finish;
 
     public int par = 3;
+    public int maxSwings = 8;
 
 	// Use this for initialization
 	void Start () {

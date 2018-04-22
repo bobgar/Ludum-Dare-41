@@ -19,6 +19,7 @@ public class GolfAgent : MonoBehaviour {
     //TODO do something with this!
     public GameObject character;
     public Ball ball;
+    public LayerMask layerMask;
 
     public State _state;
     public State _lastState;
@@ -29,7 +30,8 @@ public class GolfAgent : MonoBehaviour {
     private GolfCourse _course;
     private Hole _curHole;
     private int _curScore;
-    private float _maxSwingStrength = 800f;    
+    private float _maxSwingStrength = 800f;
+    private float _accuracy = 30f;
 
 	// Use this for initialization
 	void Start () {
@@ -42,10 +44,16 @@ public class GolfAgent : MonoBehaviour {
         {
             case State.WALKING_TO_HOLE:
                 float speed = Time.deltaTime * WALK_SPEED;
-                Vector3 goalVec = (_curHole.start.transform.position + _curHole.start.startLocation) - character.transform.position - new Vector3(0, 0,0.5f); 
+                Vector3 goalVec = (_curHole.start.transform.position + _curHole.start.startLocation) - character.transform.position - new Vector3(0, 0,0.5f);
+                goalVec.y = 0;
                 if (goalVec.magnitude > speed)
                 {
                     character.transform.position += goalVec.normalized * speed;
+
+                    RaycastHit info;
+                    bool didHit = Physics.Raycast(character.transform.position + new Vector3(0, 10, 0), new Vector3(0, -1, 0), out info, 20.0f, layerMask.value);
+                    if (didHit)
+                        character.transform.position = info.point;
                     character.transform.LookAt(_curHole.transform.position +_curHole.start.startLocation);
                 }
                 else
@@ -58,10 +66,17 @@ public class GolfAgent : MonoBehaviour {
             case State.WALKING_TO_BALL:
                 speed = Time.deltaTime * WALK_SPEED;
                 goalVec = ball.transform.position - character.transform.position - new Vector3(0,0,0.5f);
+                goalVec.y = 0;
                 if (goalVec.magnitude > speed)
                 {
                     character.transform.position += goalVec.normalized * speed;
-                    character.transform.LookAt(ball.transform.position);
+
+                    RaycastHit info;
+                    bool didHit = Physics.Raycast(character.transform.position + new Vector3(0, 10, 0), new Vector3(0, -1, 0), out info, 20, layerMask.value);
+                    if(didHit)
+                        character.transform.position = info.point;
+
+                    character.transform.LookAt(new Vector3(ball.transform.position.x, character.transform.position.y, ball.transform.position.z));
                 }
                 else
                 {
@@ -73,7 +88,7 @@ public class GolfAgent : MonoBehaviour {
             case State.WAITING_FOR_BALL_TO_STOP:
                 if (ball.GetComponent<Rigidbody>().velocity.magnitude < .1f)
                 {
-                    if (InHole)
+                    if (InHole || swingCount >= _curHole.maxSwings)
                     {
                         //Hole complete!  Handle move to next hole?
                         _curHole = _course.GetNextHole(_curHole);
@@ -145,9 +160,12 @@ public class GolfAgent : MonoBehaviour {
     {
         yield return new WaitForSeconds(WAIT_TIME);
         Vector3 goalVec = CalculateGoalSwing();
+
+        Quaternion randRot = Quaternion.Euler(0, (Random.value - 0.5f) * _accuracy, 0);
+        Vector3 forceVec = randRot * goalVec.normalized;
         float swingStrength = Mathf.Min(_maxSwingStrength, goalVec.magnitude * 40.0f);
         Debug.Log("Swinging with strength: " + swingStrength);
-        ball.GetComponent<Rigidbody>().AddForce(goalVec.normalized * swingStrength);
+        ball.GetComponent<Rigidbody>().AddForce(forceVec * swingStrength);
         swingCount++;
         ChangeState(State.WAITING_FOR_BALL_TO_STOP);
     }
