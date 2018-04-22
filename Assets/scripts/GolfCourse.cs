@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class GolfCourse : MonoBehaviour {
 
+    public enum STATE
+    {
+        BUILD,
+        WAVE
+    }
+
+    public STATE curState = STATE.BUILD;
+    public const float BUILD_TIME = 15;
+
     public static GolfCourse instance;
     
     public Text waveText;
@@ -33,12 +42,15 @@ public class GolfCourse : MonoBehaviour {
     private int curWave = 0;
     private int golfersLeft;
 
-	// Use this for initialization
-	void Start () {
+    private float _elapsedBuildTime;
+
+    // Use this for initialization
+    void Start () {
         //AddAgent();
         //StartCoroutine(TestAddAgents());
 
-        StartCoroutine(StartWave(0));
+        //StartCoroutine(StartWave(0));
+        ChangeState(STATE.BUILD);
 
         instance = this;
 
@@ -53,13 +65,45 @@ public class GolfCourse : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		switch(curState)
+        {
+            case STATE.BUILD:
+                _elapsedBuildTime += Time.deltaTime;
+                if (_elapsedBuildTime > BUILD_TIME)
+                {
+                    ChangeState(STATE.WAVE);
+                }
+                else
+                {
+                    waveText.text = "Wave " + (curWave + 1) + " in " + (int)(BUILD_TIME-_elapsedBuildTime);
+                }
+                break;
+            case STATE.WAVE:
+                break;
+        }
 	}
+
+    private void ChangeState(STATE s)
+    {
+        curState = s;
+        switch (curState)
+        {
+            case STATE.BUILD:
+                _elapsedBuildTime = 0;
+                break;
+            case STATE.WAVE:
+                StartCoroutine(StartWave(curWave));
+                break;
+        }
+    }
 
     private IEnumerator StartWave(int waveIndex)
     {
         curWave = waveIndex;
         Wave w = waves[waveIndex];
+
+        totalScore = 0;
+        totalFinished = 0;
 
         waveText.text = "Wave: " + (waveIndex + 1);
         par.text = "Par: " + holes[0].par;
@@ -93,6 +137,18 @@ public class GolfCourse : MonoBehaviour {
         ga.character.transform.position = agentSpawnPoint.position;
         ga.SetupAgent(this);
         agents.Add(ga);
+    }
+
+    public void RemoveAgent(GolfAgent a)
+    {
+        agents.Remove(a);
+        GameObject.Destroy(a.gameObject);
+        if(agents.Count == 0)
+        {
+            curWave++;
+            //GetMoneyFromWaveAndReset();
+            ChangeState(STATE.BUILD);
+        }
     }
 
     public Hole FinishHoleAndGetNext(Hole hole, int swingCount)

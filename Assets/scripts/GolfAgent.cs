@@ -98,8 +98,9 @@ public class GolfAgent : MonoBehaviour {
                         swingCount = 0;
                         if (_curHole == null)
                         {
-                            _course.agents.Remove(this);
-                            GameObject.Destroy(this.gameObject);
+                            GolfCourse.instance.RemoveAgent(this);
+                            //_course.agents.Remove(this);
+                            //GameObject.Destroy(this.gameObject);
                         }
                         else
                         {
