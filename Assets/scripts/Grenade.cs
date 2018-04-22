@@ -7,7 +7,7 @@ public class Grenade : MonoBehaviour {
     private float timeToExplode = 2f;
     private float power = 10f;
     private float radius = 5f;
-    private float upforce = 1f;
+    private float upforce = .5f;
 
 	// Use this for initialization
 	void Start () {
@@ -23,14 +23,14 @@ public class Grenade : MonoBehaviour {
     {
         yield return new WaitForSeconds(timeToExplode);
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, radius);
-        Debug.Log("collider count: "+ colliders.Length);
+        //Debug.Log("collider count: "+ colliders.Length);
         for(int i = 0; i < colliders.Length; i++)
         {
-            Debug.Log("exploding " + colliders[i].gameObject.name);
+            //Debug.Log("exploding " + colliders[i].gameObject.name);
             Rigidbody r = colliders[i].GetComponent<Rigidbody>();
             if (r != null)
             {
-                Debug.Log(r);
+                //Debug.Log(r);
                 r.AddExplosionForce(power, this.transform.position, radius, upforce, ForceMode.Impulse);
             }
         }

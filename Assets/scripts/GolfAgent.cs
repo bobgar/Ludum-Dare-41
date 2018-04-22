@@ -118,7 +118,8 @@ public class GolfAgent : MonoBehaviour {
 
     public void ResetBallPosition()
     {
-        ball.transform.position = (_curHole.start.transform.position + _curHole.start.startLocation);
+        Vector2 insideUnitCircle = Random.insideUnitCircle;
+        ball.transform.position = (_curHole.start.transform.position + _curHole.start.startLocation + new Vector3(insideUnitCircle.x, 0, insideUnitCircle.y));
         ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
@@ -140,13 +141,13 @@ public class GolfAgent : MonoBehaviour {
             case State.WALKING_TO_HOLE:
                 //You've picked up your ball
                 ball.gameObject.SetActive(false);
-                Debug.Log("WALKING TO HOLE");
+                //Debug.Log("WALKING TO HOLE");
                 break;
             case State.WALKING_TO_BALL:
-                Debug.Log("WALKING TO BALL");
+                //Debug.Log("WALKING TO BALL");
                 break;
             case State.WAITING_FOR_NEXT_SWING:
-                Debug.Log("SWINGING");
+                //Debug.Log("SWINGING");
                 if (!ball.gameObject.activeSelf)
                 {
                     ball.gameObject.SetActive(true);
@@ -155,7 +156,7 @@ public class GolfAgent : MonoBehaviour {
                 StartCoroutine(SwingAfterWait());
                 break;
             case State.WAITING_FOR_BALL_TO_STOP:
-                Debug.Log("WAITING FOR BALL TO STOP");
+                //Debug.Log("WAITING FOR BALL TO STOP");
                 break;
         }
     }
@@ -168,7 +169,7 @@ public class GolfAgent : MonoBehaviour {
         Quaternion randRot = Quaternion.Euler(0, (Random.value - 0.5f) * _accuracy, 0);
         Vector3 forceVec = randRot * goalVec.normalized;
         float swingStrength = Mathf.Min(_maxSwingStrength, goalVec.magnitude * 80.0f );
-        Debug.Log("Swinging with strength: " + swingStrength);
+        //Debug.Log("Swinging with strength: " + swingStrength);
         ball.GetComponent<Rigidbody>().AddForce(forceVec * swingStrength);
         swingCount++;
         ChangeState(State.WAITING_FOR_BALL_TO_STOP);

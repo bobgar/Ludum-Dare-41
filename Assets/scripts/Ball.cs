@@ -24,13 +24,13 @@ public class Ball : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger! " + other.gameObject.name);
+        //Debug.Log("trigger! " + other.gameObject.name);
         golfAgent.InHole = true;
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit trigger! " + other.gameObject.name);
+        //Debug.Log("exit trigger! " + other.gameObject.name);
         golfAgent.InHole = false;
     }
 
