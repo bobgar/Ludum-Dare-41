@@ -8,7 +8,7 @@ public class MissileTower : Tower {
     public Missile missilePrefab;
 
     private float[] rateOfFireLevels = { 5, 4, 3, 2 };
-    private float[] powerLevels = { 1, 2, 3, 4 };
+    private float[] powerLevels = { 2, 3, 4, 5 };
     private float[] speedLevels = { 4f, 6f, 8f, 10f };
     ///private float[] explosionRadiusLevels = { 3, 5, 7, 9 };
 

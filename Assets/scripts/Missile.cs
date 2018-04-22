@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Missile : MonoBehaviour {
-    private float maxDist = 15f;
+    private float maxDist = 10f;
     public float power = 10f;
-    public float radius = 5f;
+    public float radius = 2f;
     public float speed = 1f;
-    public float upforce = .1f;
+    public float upforce = .3f;
     public GameObject target;
 
     // Use this for initialization
