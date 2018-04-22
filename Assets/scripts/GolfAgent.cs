@@ -24,6 +24,7 @@ public class GolfAgent : MonoBehaviour {
     public State _state;
     public State _lastState;
     public int swingCount = 0;
+    public List<int> totalSwingCount = new List<int>();
 
     public bool InHole { get; set; }
 
@@ -65,7 +66,8 @@ public class GolfAgent : MonoBehaviour {
                 break;
             case State.WALKING_TO_BALL:
                 speed = Time.deltaTime * WALK_SPEED;
-                goalVec = ball.transform.position - character.transform.position - new Vector3(0,0,0.5f);
+                Vector3 backFromBall = CalculateGoalSwing().normalized * -.5f;
+                goalVec = ball.transform.position - character.transform.position + backFromBall;//- new Vector3(0,0,0.5f);
                 goalVec.y = 0;
                 if (goalVec.magnitude > speed)
                 {
@@ -91,7 +93,9 @@ public class GolfAgent : MonoBehaviour {
                     if (InHole || swingCount >= _curHole.maxSwings)
                     {
                         //Hole complete!  Handle move to next hole?
-                        _curHole = _course.GetNextHole(_curHole);
+                        _curHole = _course.FinishHoleAndGetNext(_curHole, swingCount);
+                        totalSwingCount.Add(swingCount);
+                        swingCount = 0;
                         if (_curHole == null)
                         {
                             _course.agents.Remove(this);
@@ -163,7 +167,7 @@ public class GolfAgent : MonoBehaviour {
 
         Quaternion randRot = Quaternion.Euler(0, (Random.value - 0.5f) * _accuracy, 0);
         Vector3 forceVec = randRot * goalVec.normalized;
-        float swingStrength = Mathf.Min(_maxSwingStrength, goalVec.magnitude * 40.0f);
+        float swingStrength = Mathf.Min(_maxSwingStrength, goalVec.magnitude * 80.0f );
         Debug.Log("Swinging with strength: " + swingStrength);
         ball.GetComponent<Rigidbody>().AddForce(forceVec * swingStrength);
         swingCount++;

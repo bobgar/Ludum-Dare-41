@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour {
 
     public GolfAgent golfAgent;
     public GameObject terrain;
+    public Rigidbody rigidBody;
 
 	// Use this for initialization
 	void Start () {
@@ -13,9 +14,13 @@ public class Ball : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void FixedUpdate () {
+        if (rigidBody.velocity.magnitude < .75f)
+        {
+            rigidBody.velocity *= .975f;
+        }
+
+    }
 
     void OnTriggerEnter(Collider other)
     {

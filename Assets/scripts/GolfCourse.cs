@@ -43,7 +43,7 @@ public class GolfCourse : MonoBehaviour {
         agents.Add(ga);
     }
 
-    public Hole GetNextHole(Hole hole)
+    public Hole FinishHoleAndGetNext(Hole hole, int swingCount)
     {
         for(int i = 0; i < holes.Count; i++)
         {

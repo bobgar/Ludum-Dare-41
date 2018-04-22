@@ -1124,6 +1124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   golfAgent: {fileID: 114503083781475540}
   terrain: {fileID: 0}
+  rigidBody: {fileID: 54745961185649444}
 --- !u!114 &114503083781475540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,6 +1144,7 @@ MonoBehaviour:
   _state: 0
   _lastState: 0
   swingCount: 0
+  totalSwingCount: 
 --- !u!135 &135608515875860812
 SphereCollider:
   m_ObjectHideFlags: 1
