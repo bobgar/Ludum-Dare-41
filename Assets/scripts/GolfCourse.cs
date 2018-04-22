@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GolfCourse : MonoBehaviour {
+
+    public static GolfCourse instance;
+
     public Text waveText;
     public Text par;
     public Text waveScore;
@@ -33,7 +36,9 @@ public class GolfCourse : MonoBehaviour {
         //StartCoroutine(TestAddAgents());
 
         StartCoroutine(StartWave(0));
-	}
+
+        instance = this;
+    }
 	
 	// Update is called once per frame
 	void Update () {

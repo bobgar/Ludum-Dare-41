@@ -20,6 +20,8 @@ public class Ball : MonoBehaviour {
             rigidBody.velocity *= .975f;
         }
 
+        if(transform.position.y < -10)
+            golfAgent.ResetBallPosition();
     }
 
     void OnTriggerEnter(Collider other)

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Grenade : MonoBehaviour {
 
     private float timeToExplode = 2f;
-    private float power = 10f;
-    private float radius = 5f;
+    public float power = 10f;
+    public float radius = 5f;
     private float upforce = .5f;
 
 	// Use this for initialization
