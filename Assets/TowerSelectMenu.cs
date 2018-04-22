@@ -39,20 +39,29 @@ public class TowerSelectMenu : MonoBehaviour {
         gameObject.SetActive(true);
         missileButton.GetComponentInChildren<Text>().text = missileItem.name +"   $" + missileItem.cost;
         grenadeButton.GetComponentInChildren<Text>().text = grenadeItem.name + "   $" + grenadeItem.cost;
+        
+        missileButton.interactable = GolfCourse.instance.curMoney >= missileItem.cost;
+        grenadeButton.interactable = GolfCourse.instance.curMoney >= grenadeItem.cost;
         _curPlacement = placement;
     }
 
     public void BuyMissileTower()
     {
         if (_curPlacement != null)
+        {
+            GolfCourse.instance.SetMoney(GolfCourse.instance.curMoney - missileItem.cost);
             _curPlacement.InstantiateTower(missileItem);
+        }
         this.gameObject.SetActive(false);
     }
 
     public void BuyGrenadeTower()
     {
         if (_curPlacement != null)
+        {
+            GolfCourse.instance.SetMoney(GolfCourse.instance.curMoney - grenadeItem.cost);
             _curPlacement.InstantiateTower(grenadeItem);
+        }
         this.gameObject.SetActive(false);
     }
 }

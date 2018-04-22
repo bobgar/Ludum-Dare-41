@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class GolfCourse : MonoBehaviour {
 
     public static GolfCourse instance;
-
+    
     public Text waveText;
     public Text par;
     public Text waveScore;
     public Text goalScore;
     public Text golfersLeftText;
+    public Text moneyText;
 
     public List<Wave> waves;
 
@@ -23,6 +24,8 @@ public class GolfCourse : MonoBehaviour {
     public List<Hole> holes;
 
     public List<GolfAgent> agents;
+
+    public int curMoney = 400;
 
     private long totalScore = 0;
     private long totalFinished = 0;
@@ -38,6 +41,14 @@ public class GolfCourse : MonoBehaviour {
         StartCoroutine(StartWave(0));
 
         instance = this;
+
+        SetMoney(400);
+    }
+
+    public void SetMoney(int money)
+    {
+        curMoney = money;
+        moneyText.text = "Money: $" + curMoney;
     }
 	
 	// Update is called once per frame
