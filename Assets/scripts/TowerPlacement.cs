@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TurretPlacement : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class TowerPlacement : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject aimTarget;
 
@@ -20,8 +20,13 @@ public class TurretPlacement : MonoBehaviour, IPointerClickHandler, IPointerEnte
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         //Output to console the clicked GameObject's name and the following message. You can replace this with your own actions for when clicking the GameObject.
+        TowerSelectMenu.instance.ShowMenu(this);
+    }
+
+    public void InstantiateTower(TowerSelectMenu.TowerItem ti)
+    {
         Debug.Log(name + " Game Object Clicked!");
-        TowerLibrary.TowerItem ti = TowerLibrary.instance.items[0];
+        //TowerLibrary.TowerItem ti = TowerLibrary.instance.items[0];
         Tower t = GameObject.Instantiate<Tower>(ti.tower);
         t.aimTarget = aimTarget;
         t.transform.position = gameObject.transform.position;
@@ -30,13 +35,13 @@ public class TurretPlacement : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        Debug.Log(name + " Enter");
+        //Debug.Log(name + " Enter");
         gameObject.GetComponent<Renderer>().material.color = Color.yellow;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        Debug.Log(name + " Exit");
+        //Debug.Log(name + " Exit");
         gameObject.GetComponent<Renderer>().material.color = Color.white;
     }
 }

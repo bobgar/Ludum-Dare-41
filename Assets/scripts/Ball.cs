@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour {
         //Debug.Log("On Colission Enter:  " + other.gameObject.name + "  terrain = " + terrain.name);
         if(other.gameObject.tag == "OutOfBounds")
         {
-            Debug.Log("resetting ball position!");
+            //Debug.Log("resetting ball position!");
             golfAgent.ResetBallPosition();
         }
     }    
