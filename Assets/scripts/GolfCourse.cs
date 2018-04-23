@@ -28,16 +28,14 @@ public class GolfCourse : MonoBehaviour {
     public GolfAgent golfAgentPrefab;
     public Transform agentSpawnPoint;
 
-    //ordered list of start and end location for each hole.
-    //for now we just use parallel lists.
     public List<Hole> holes;
 
     public List<GolfAgent> agents;
 
     public int curMoney = 400;
 
-    private long totalScore = 0;
-    private long totalFinished = 0;
+    private int totalScore = 0;
+    private int totalFinished = 0;
 
     private int curWave = 0;
     private int golfersLeft;
@@ -105,8 +103,7 @@ public class GolfCourse : MonoBehaviour {
         totalScore = 0;
         totalFinished = 0;
 
-        waveText.text = "Wave: " + (waveIndex + 1);
-        par.text = "Par: " + holes[0].par;
+        waveText.text = "Wave: " + (waveIndex + 1);        
         waveScore.text = "Wave Score: 0";
         goalScore.text = "Goal Score: " + w.goalScore;
         golfersLeft = w.golfers;
@@ -146,6 +143,7 @@ public class GolfCourse : MonoBehaviour {
         if(agents.Count == 0)
         {
             curWave++;
+            SetMoney(curMoney + totalScore * 10);// - (hole.par * totalFinished) * 10)
             //GetMoneyFromWaveAndReset();
             ChangeState(STATE.BUILD);
         }
@@ -157,8 +155,8 @@ public class GolfCourse : MonoBehaviour {
         golfersLeftText.text = "Golfers Left: " + golfersLeft;
         totalScore += swingCount;
         totalFinished++;
-        long comparedToPar = totalScore - (hole.par * totalFinished);
-        waveScore.text = "Wave Score : " + comparedToPar;
+        //long comparedToPar = totalScore - (hole.par * totalFinished);
+        waveScore.text = "Wave Score : " + totalScore;
         
         for(int i = 0; i < holes.Count; i++)
         {
