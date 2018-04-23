@@ -11,8 +11,8 @@ public class TileReplacement : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
 	void Start()
     {
-
-	}
+        _startColor = gameObject.GetComponentInChildren<Renderer>().material.color;
+    }
 
     void Update()
     {
@@ -34,15 +34,16 @@ public class TileReplacement : MonoBehaviour, IPointerClickHandler, IPointerEnte
         GameObject.Destroy(this.gameObject);
     }
 
+    private Color _startColor;
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // When selected tile is clicked, course becomes yellow
-        //gameObject.GetComponentInChildren<Renderer>().material.color = Color.yellow;
+        gameObject.GetComponentInChildren<Renderer>().material.color = Color.yellow;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         // When selected tile is clicked, course becomes yellow
-        //gameObject.GetComponentInChildren<Renderer>().material.color = Color.white;
+        gameObject.GetComponentInChildren<Renderer>().material.color = _startColor;
     }
 }
