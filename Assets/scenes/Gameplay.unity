@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3966db8bd611e2649b47e1c0525220d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  replacement: {fileID: 1333641431952484, guid: 6c522d3c1667ac246b156cb1c694cb05,
+  replacement: {fileID: 1145068708504474, guid: 74b08b3e8c2267041a67d9c6c3423162,
     type: 2}
 --- !u!4 &291534602 stripped
 Transform:
@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3966db8bd611e2649b47e1c0525220d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  replacement: {fileID: 1333641431952484, guid: 6c522d3c1667ac246b156cb1c694cb05,
+  replacement: {fileID: 1145068708504474, guid: 74b08b3e8c2267041a67d9c6c3423162,
     type: 2}
 --- !u!1 &835035732 stripped
 GameObject:
@@ -3205,7 +3205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3966db8bd611e2649b47e1c0525220d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  replacement: {fileID: 1333641431952484, guid: 6c522d3c1667ac246b156cb1c694cb05,
+  replacement: {fileID: 1145068708504474, guid: 74b08b3e8c2267041a67d9c6c3423162,
     type: 2}
 --- !u!1 &1671907846
 GameObject:

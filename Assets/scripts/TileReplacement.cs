@@ -37,12 +37,12 @@ public class TileReplacement : MonoBehaviour, IPointerClickHandler, IPointerEnte
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // When selected tile is clicked, course becomes yellow
-        gameObject.GetComponentInChildren<Renderer>().material.color = Color.yellow;
+        //gameObject.GetComponentInChildren<Renderer>().material.color = Color.yellow;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         // When selected tile is clicked, course becomes yellow
-        gameObject.GetComponentInChildren<Renderer>().material.color = Color.white;
+        //gameObject.GetComponentInChildren<Renderer>().material.color = Color.white;
     }
 }
