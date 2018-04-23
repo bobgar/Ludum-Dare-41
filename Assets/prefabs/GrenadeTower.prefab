@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4684072183290824}
   - component: {fileID: 95117436375093386}
   - component: {fileID: 114976495510601026}
+  - component: {fileID: 65173300601932098}
   m_Layer: 0
   m_Name: GrenadeTower
   m_TagString: Untagged
@@ -249,8 +250,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469894764967874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.82332, y: 0, z: 121.34}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4934868886470700}
@@ -303,6 +304,18 @@ Transform:
   m_Father: {fileID: 4684072183290824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65173300601932098
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1469894764967874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95117436375093386
 Animator:
   serializedVersion: 3
@@ -334,6 +347,16 @@ MonoBehaviour:
   aimTarget: {fileID: 0}
   shotPower: 200
   rateOfFire: 3
+  towerItem:
+    name: 
+    cost: 0
+    tower: {fileID: 0}
+    rateOfFireUpgradeCosts: 
+    rateOfFireLevels: []
+    powerLevelUpgradeCosts: 
+    powerLevels: []
+  rateOfFireLevel: 0
+  powerLevel: 0
   anim: {fileID: 95117436375093386}
   top: {fileID: 1835901875666154}
   grenadePrefab: {fileID: 114584151938466258, guid: b44559304d0639b4d8c6cc167ff119d2,

@@ -6,19 +6,17 @@ public class MissileTower : Tower {
     public Animator anim;
     public GameObject top;
     public Missile missilePrefab;
-
-    private float[] rateOfFireLevels = { 5, 4, 3, 2 };
-    private float[] powerLevels = { 2, 3, 4, 5 };
-    private float[] speedLevels = { 4f, 6f, 8f, 10f };
-    ///private float[] explosionRadiusLevels = { 3, 5, 7, 9 };
-
-    private int rateOfFireLevel = 0;
-    private int powerLevel = 0;
-    private int speedLevel = 0;
+    
+    //private float[] rateOfFireLevels = { 5, 4, 3, 2 };
+    //private float[] powerLevels = { 3, 5, 7, 9 };
+    //private float[] speedLevels = { 4f, 6f, 8f, 10f };
+    //private float[] explosionRadiusLevels = { 3, 5, 7, 9 };
+    float speed = 5f;    
 
     // Use this for initialization
     void Start()
     {
+        towerItem = TowerSelectMenu.instance.missileItem;
         //top.transform.LookAt(aimTarget.transform);
         if (aimTarget != null)
         {
@@ -30,7 +28,7 @@ public class MissileTower : Tower {
     {
         base.Setup(target);
         top.transform.LookAt(aimTarget.transform.position);
-        rateOfFire = rateOfFireLevels[rateOfFireLevel];
+        rateOfFire = towerItem.rateOfFireLevels[rateOfFireLevel];
     }
 
     // Update is called once per frame
@@ -50,8 +48,8 @@ public class MissileTower : Tower {
         yield return new WaitForSeconds(.25f);
         Missile m = GameObject.Instantiate<Missile>(missilePrefab);
         m.radius = 3;// explosionRadiusLevels[explosionRadiusLevel];
-        m.speed = speedLevels[speedLevel];
-        m.power = powerLevels[powerLevel];
+        m.speed = speed;//speedLevels[speedLevel];
+        m.power = towerItem.powerLevels[powerLevel];
         Vector3 goalVec = (aimTarget.transform.position - top.transform.position).normalized;
         m.transform.position = top.transform.position + new Vector3(0, 1, 0) + goalVec.normalized * 1f;
 

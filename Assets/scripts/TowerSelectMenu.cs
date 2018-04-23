@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class TowerSelectMenu : MonoBehaviour {
 
     [System.Serializable]
-    public struct TowerItem
+    public class TowerItem
     {
         public string name;
         public int cost;
         public Tower tower;
+        public int[] rateOfFireUpgradeCosts;
+        public float[] rateOfFireLevels;// = { 5, 4, 3, 2 };
+        public int[] powerLevelUpgradeCosts;
+        public float[] powerLevels;// = { 3, 5, 7, 9 };
     }
 
     public TowerItem missileItem;

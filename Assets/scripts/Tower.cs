@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Tower : MonoBehaviour {
+public class Tower : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+{
 
     public GameObject aimTarget;
     public float shotPower = 200;
     public float rateOfFire;
-    protected float fireTimer = 0;
+    public TowerSelectMenu.TowerItem towerItem;
+    public int rateOfFireLevel = 0;
+    public int powerLevel = 0;
+    protected float fireTimer = 0;    
 
     public virtual void Setup(GameObject target)
     {
@@ -23,4 +28,36 @@ public class Tower : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void UpgradePower()
+    {
+        powerLevel++;
+        shotPower = towerItem.powerLevels[powerLevel];
+    }
+
+    public void UpgradeRateOfFire()
+    {
+        rateOfFireLevel++;
+        rateOfFire = towerItem.rateOfFireLevels[rateOfFireLevel];
+    }
+
+
+    public void OnPointerClick(PointerEventData pointerEventData)
+    {
+        TowerUpgrade.instance.ShowMenu(this);
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        //Debug.Log(name + " Enter");
+        //gameObject.GetComponentInChildren<Renderer>().material.color = Color.yellow;
+        //gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        //Debug.Log(name + " Exit");
+        //gameObject.GetComponentInChildren<Renderer>().material.color = Color.white;
+        //gameObject.GetComponent<Renderer>().material.color = Color.white;
+    }
 }
