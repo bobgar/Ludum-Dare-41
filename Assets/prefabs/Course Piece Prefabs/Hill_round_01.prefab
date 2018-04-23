@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4307100444413932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hill_round_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33902415332732858}
   - component: {fileID: 23035845185398134}
   - component: {fileID: 64375295966676924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh1_Hill_round_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

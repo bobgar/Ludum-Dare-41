@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33974061222940590}
   - component: {fileID: 23349547637304150}
   - component: {fileID: 64506241641688550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh1_Narrow_round_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4875843233499988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Narrow_round_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

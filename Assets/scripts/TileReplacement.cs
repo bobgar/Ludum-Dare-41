@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class TileReplacement : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject replacement;
+    public GameObject replacementPiece;
 
 	void Start()
     {
@@ -31,7 +32,8 @@ public class TileReplacement : MonoBehaviour, IPointerClickHandler, IPointerEnte
         //Tile t = GameObject.Instantiate<Tile>(ti.tile);
         GameObject t = GameObject.Instantiate<GameObject>(tile);
         t.transform.position = gameObject.transform.position;
-        GameObject.Destroy(this.gameObject);
+        t.transform.parent = this.transform;
+        GameObject.Destroy(replacementPiece);
     }
 
     private Color _startColor;
