@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class TileSelectMenu : MonoBehaviour
 {
     [System.Serializable]
-	public struct TileItem
+	public class TileItem
 	{
         public string name;
         public int cost;
-        public Tile tile;
+        public GameObject tile;
 	}
 
     public TileItem hillItem;
@@ -35,15 +35,15 @@ public class TileSelectMenu : MonoBehaviour
     public void ShowMenu(TileReplacement replacement)
     {
         gameObject.SetActive(true);
-        hillButton.GetComponentIntChildren<Text>().text = hillItem.name + " $" + hillItem.cost;
+        hillButton.GetComponentInChildren<Text>().text = hillItem.name + " $" + hillItem.cost;
     }
 
     public void BuyHillTile()
     {
         if (_curPlacement != null)
         {
-            GolfCourse.instance.SetMoney(Golfcourse.instance.curMoney - hillItem.cost);
-            _curPlacement.InstantiateTower(hillItem);
+            GolfCourse.instance.SetMoney(GolfCourse.instance.curMoney - hillItem.cost);
+            _curPlacement.InstantiateTile(hillItem.tile);
         }
         this.gameObject.SetActive(false);
     }
