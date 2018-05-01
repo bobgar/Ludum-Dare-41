@@ -7,7 +7,7 @@ public class Tower : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, 
 {
 
     public GameObject aimTarget;
-    public float shotPower = 200;
+    public float shotPower;
     public float rateOfFire;
     public TowerSelectMenu.TowerItem towerItem;
     public int rateOfFireLevel = 0;
@@ -17,6 +17,8 @@ public class Tower : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, 
     public virtual void Setup(GameObject target)
     {
         aimTarget = target;
+        rateOfFire = towerItem.rateOfFireLevels[0];
+        shotPower = towerItem.powerLevels[0];
     }
 
     // Use this for initialization

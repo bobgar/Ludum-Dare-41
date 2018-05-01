@@ -72,14 +72,17 @@ public class Missile : MonoBehaviour {
     private void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, radius);
-        for (int i = 0; i < colliders.Length; i++)
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        if (target)
         {
-            Rigidbody r = colliders[i].GetComponent<Rigidbody>();
+            Rigidbody r = target.GetComponent<Rigidbody>();
             if (r != null)
             {
                 r.AddExplosionForce(power, this.transform.position, radius, upforce, ForceMode.Impulse);
             }
         }
+        //}
 
         GameObject.Destroy(this.gameObject);
     }

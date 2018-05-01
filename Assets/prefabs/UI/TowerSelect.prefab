@@ -229,10 +229,10 @@ MonoBehaviour:
     tower: {fileID: 114654515823289854, guid: a62fa7e1b560f244c9b89d1d40623dca, type: 2}
     rateOfFireUpgradeCosts: 64000000c800000090010000
     rateOfFireLevels:
-    - 5
     - 4
     - 3
     - 2
+    - 1
     powerLevelUpgradeCosts: 64000000c800000090010000
     powerLevels:
     - 3
@@ -245,10 +245,10 @@ MonoBehaviour:
     tower: {fileID: 114976495510601026, guid: 0577d7b69f8f97f4c9ebfd7bed084abe, type: 2}
     rateOfFireUpgradeCosts: c80000009001000020030000
     rateOfFireLevels:
-    - 6
     - 5
     - 4
     - 3
+    - 2
     powerLevelUpgradeCosts: c80000009001000020030000
     powerLevels:
     - 3

@@ -28,7 +28,7 @@ public class MissileTower : Tower {
     {
         base.Setup(target);
         top.transform.LookAt(aimTarget.transform.position);
-        rateOfFire = towerItem.rateOfFireLevels[rateOfFireLevel];
+        //rateOfFire = towerItem.rateOfFireLevels[rateOfFireLevel];
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class MissileTower : Tower {
         Missile m = GameObject.Instantiate<Missile>(missilePrefab);
         m.radius = 3;// explosionRadiusLevels[explosionRadiusLevel];
         m.speed = speed;//speedLevels[speedLevel];
-        m.power = towerItem.powerLevels[powerLevel];
+        m.power = shotPower;//towerItem.powerLevels[powerLevel];
         Vector3 goalVec = (aimTarget.transform.position - top.transform.position).normalized;
         m.transform.position = top.transform.position + new Vector3(0, 1, 0) + goalVec.normalized * 1f;
 

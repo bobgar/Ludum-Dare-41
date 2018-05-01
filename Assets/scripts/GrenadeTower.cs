@@ -6,6 +6,7 @@ public class GrenadeTower : Tower {
     public Animator anim;
     public GameObject top;
     public Grenade grenadePrefab;
+    private float _firePower = 200;
 
     //private float[] rateOfFireLevels = { 6, 5, 4, 3};
     //private float[] powerLevels = { 3, 6, 10, 15 };
@@ -27,7 +28,7 @@ public class GrenadeTower : Tower {
     {
         base.Setup(target);
         top.transform.LookAt(aimTarget.transform.position);
-        rateOfFire = towerItem.rateOfFireLevels[rateOfFireLevel];
+        //rateOfFire = towerItem.rateOfFireLevels[rateOfFireLevel];
     }
 
     // Update is called once per frame
@@ -46,9 +47,9 @@ public class GrenadeTower : Tower {
         yield return new WaitForSeconds(.25f);
         Grenade g = GameObject.Instantiate<Grenade>(grenadePrefab);
         g.radius = explosionRadius;//explosionRadiusLevels[explosionRadiusLevel];
-        g.power = towerItem.powerLevels[powerLevel];
+        g.power = shotPower; //towerItem.powerLevels[powerLevel];
         Vector3 goalVec = (aimTarget.transform.position  - top.transform.position).normalized;
         g.transform.position = top.transform.position + new Vector3(0,1,0) +  goalVec.normalized * 1f;
-        g.GetComponent<Rigidbody>().AddForce(new Vector3(goalVec.x * shotPower, 200f, goalVec.z * shotPower) );
+        g.GetComponent<Rigidbody>().AddForce(new Vector3(goalVec.x * _firePower, 200f, goalVec.z * _firePower) );
     }
 }

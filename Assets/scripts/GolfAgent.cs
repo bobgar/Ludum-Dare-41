@@ -6,6 +6,7 @@ public class GolfAgent : MonoBehaviour {
 
     public static int WALK_SPEED = 4;
     public static float WAIT_TIME = 1f;
+    public static float WAIT_FOR_STOP_TIME = 5f;
 
     public enum State
     {
@@ -33,6 +34,7 @@ public class GolfAgent : MonoBehaviour {
     private int _curScore;
     private float _maxSwingStrength = 800f;
     private float _accuracy = 30f;
+    private float _waitForStopElapsed = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -88,8 +90,9 @@ public class GolfAgent : MonoBehaviour {
                 }
                 break;
             case State.WAITING_FOR_BALL_TO_STOP:
-                if (ball.GetComponent<Rigidbody>().velocity.magnitude < .1f)
-                {
+                _waitForStopElapsed += Time.deltaTime;
+                if (ball.GetComponent<Rigidbody>().velocity.magnitude < .1f || _waitForStopElapsed > WAIT_FOR_STOP_TIME)
+                {                    
                     if (InHole || swingCount >= _curHole.maxSwings)
                     {
                         //Hole complete!  Handle move to next hole?
@@ -157,6 +160,7 @@ public class GolfAgent : MonoBehaviour {
                 StartCoroutine(SwingAfterWait());
                 break;
             case State.WAITING_FOR_BALL_TO_STOP:
+                _waitForStopElapsed = 0;
                 //Debug.Log("WAITING FOR BALL TO STOP");
                 break;
         }

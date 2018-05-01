@@ -3591,6 +3591,86 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224025882576520470, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224025882576520470, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224025882576520470, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224025882576520470, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224640736184807352, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224640736184807352, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224640736184807352, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224640736184807352, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321715495016944, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321715495016944, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321715495016944, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321715495016944, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224634477060695094, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224634477060695094, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224634477060695094, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224634477060695094, guid: 6f1e17b1b53fcb34abcefc522369abe1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f1e17b1b53fcb34abcefc522369abe1, type: 2}
   m_IsPrefabParent: 0
@@ -3853,10 +3933,34 @@ MonoBehaviour:
   waves:
   - golfers: 5
     timeBetweenGolfers: 10
-    goalScore: 8
+    goalScore: 15
   - golfers: 10
     timeBetweenGolfers: 10
-    goalScore: 20
+    goalScore: 30
+  - golfers: 12
+    timeBetweenGolfers: 5
+    goalScore: 40
+  - golfers: 15
+    timeBetweenGolfers: 4
+    goalScore: 60
+  - golfers: 20
+    timeBetweenGolfers: 4
+    goalScore: 80
+  - golfers: 20
+    timeBetweenGolfers: 3
+    goalScore: 90
+  - golfers: 25
+    timeBetweenGolfers: 3
+    goalScore: 100
+  - golfers: 30
+    timeBetweenGolfers: 2
+    goalScore: 150
+  - golfers: 40
+    timeBetweenGolfers: 1
+    goalScore: 200
+  - golfers: 50
+    timeBetweenGolfers: 1
+    goalScore: 300
   golfAgentPrefab: {fileID: 114503083781475540, guid: 90a852b9c6de6434ab746c6464927d9a,
     type: 2}
   agentSpawnPoint: {fileID: 1360561566}
